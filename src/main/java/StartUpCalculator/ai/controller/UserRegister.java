@@ -1,7 +1,4 @@
 package StartUpCalculator.ai.controller;
-import StartUpCalculator.ai.dto.UserDto;
-import StartUpCalculator.ai.service.UserService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +8,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserRegister{
  
-  @Autowired
-  private UserService userService;
-
-  @RequestMapping(value="/hi")
+  @RequestMapping(value="/")
   public String indexPage(){
-    return "index";
+    return "index.html";
   }
 }
 
