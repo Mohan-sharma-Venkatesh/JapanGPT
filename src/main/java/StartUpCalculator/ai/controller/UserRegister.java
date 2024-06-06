@@ -14,29 +14,7 @@ public class UserRegister{
   @Autowired
   private UserService userService;
 
-  @RequestMapping(value="/register")
-  public String getRegister( @ModelAttribute("user") UserDto userDto){
-    return "userRegister";
-  }
-  
-  @PostMapping(value="/register")
-  public String register(@Valid @ModelAttribute("user") UserDto userDto, 
-                                BindingResult result, Model model) {
-    if(userService.existsByEmail(userDto) ==true){
-      model.addAttribute("email_exists","email if already exits");
-      return "userRegister";
-    }
-      
-  
-    if (result.hasErrors()) {
-      model.addAttribute("user", userDto);
-      return "userRegister";
-    }
-    userService.save(userDto);
-    return "index";
-  }
-  
-  @RequestMapping(value="/")
+  @RequestMapping(value="/hi")
   public String indexPage(){
     return "index";
   }
