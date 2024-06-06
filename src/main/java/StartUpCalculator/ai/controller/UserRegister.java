@@ -36,5 +36,9 @@ public class UserRegister{
     return "index";
   }
   
+  @RequestMapping(value="/")
+  public String indexPage(){
+    return "index";
+  }
 }
 
