@@ -5,6 +5,18 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+class UserInput{
+  String data;
+
+  public void setData(String data){
+    this.data= data;
+  }
+
+  public String getData(){
+    return this.data;
+  }
+}
+
 @Controller
 public class Index{
  
@@ -14,8 +26,8 @@ public class Index{
   }
  
   @PostMapping(value="/")
-  public String getInput(@RequestBody String data){
-    System.out.print("------------"+data);
+  public String getInput(UserInput userInput,Model model){
+    System.out.print("------------"+userInput.getData());
     return "index.html";
   }
 }
