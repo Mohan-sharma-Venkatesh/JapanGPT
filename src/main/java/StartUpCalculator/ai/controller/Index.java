@@ -30,7 +30,7 @@ public class Index {
     // Ensure userQuery is properly escaped if necessary
     userQuery = userQuery.replace("\"", "\\\"");
 
-    String url = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=AIzaSyAcZiXYhRwupywT-VLEeFjF8K_NyTpuxP4";
+    String url = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=AIzaSyAcZiXYhRwupywT-VLEeFjF8K_NyTpuxP4";
 
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_JSON);
