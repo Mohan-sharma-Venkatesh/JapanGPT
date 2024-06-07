@@ -39,11 +39,6 @@ String contents = "{\"contents\":[{\"parts\":[{\"text\": \"";
 String jsonCloseBrakets = "\"}]}]}";
 String requestJson =  contents + userQuery + jsonCloseBrakets;
 
-System.out.print("---------------------" + requestJson);
-
-// Now requestJson will contain the properly formatted JSON string with outer double quotes
-//String requestJson = "{\"contents\":[{\"parts\":[{\"text\": \"Write a story about a magic backpack\"}]}]}";
-
 HttpEntity<String> entity = new HttpEntity<String>(requestJson, headers);
 
 RestTemplate restTemplate = new RestTemplate();
@@ -62,7 +57,8 @@ if (jsonObject.has("candidates") && jsonObject.getJSONArray("candidates").length
 System.out.println("Extracted Text: " + textValue);
     System.out.println("Extracted Text: " + textValue);
 
-    return "index.html";
+    model.addAttribute("response", textValue);
+    return "output.html";
   }
 }
 
