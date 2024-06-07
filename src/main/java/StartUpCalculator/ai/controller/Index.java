@@ -6,14 +6,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 class UserInput{
-  String data;
+  private String query;
 
-  public void setData(String data){
-    this.data= data;
+  public void setQuery(String query){
+    this.query= query;
   }
 
-  public String getData(){
-    return this.data;
+  public String getQuery(){
+    return this.query;
   }
 }
 
@@ -27,7 +27,7 @@ public class Index{
  
   @PostMapping(value="/")
   public String getInput(UserInput userInput,Model model){
-    System.out.print("------------"+userInput.getData());
+    System.out.print("------------"+userInput.getQuery());
     return "index.html";
   }
 }
