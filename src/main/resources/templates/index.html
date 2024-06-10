@@ -52,7 +52,8 @@
     <div class="container mt-4">
         <div class="chat-container">
             <div id="chat-box" class="chat-box">
-                <!-- Chat messages will appear here -->  
+              <!-- Chat messages will appear here -->
+              <div id="answer"></div>
             </div>
             <form id="chat-form" method="post"> 
                 <div class="input-container p-3">
@@ -70,13 +71,10 @@
                     url: '/', // The URL to which the request is sent
                     type: 'POST', // The type of request to make
                     data: $(this).serialize(), // Serialize the form data
+                      debugger;
                     success: function(response) {
-                        // Handle the response from the server
+                      // Handle the response from the server
                         console.log('Success:', response);
-                        $('#chat-box').append(`<div class="message user-message">${$('#chat-input').val()}</div>`);
-                        $('#chat-box').append(`<div class="message">${response}</div>`);
-                        $('#chat-input').val(''); // Clear the input field
-                        $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight); // Scroll to the bottom
                     },
                     error: function(xhr, status, error) {
                         // Handle any errors that occurred during the request
