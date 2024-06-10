@@ -14,6 +14,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.ResponseEntity;
+
+import java.sql.Timestamp;
+
 @Controller
 public class Index {
 
@@ -25,6 +28,9 @@ public class Index {
   @PostMapping(value = "/")
   public String getInput(UserInput userInput, Model model) {
     System.out.print("------------" + userInput.getQuery());
+    
+    Timestamp startTime= new Timestamp(System.currentTimeMillis());
+    System.out.print(startTime);
     String userQuery = userInput.getQuery();
 
     // Ensure userQuery is properly escaped if necessary
@@ -43,6 +49,10 @@ public class Index {
 
     RestTemplate restTemplate = new RestTemplate();
     ResponseEntity < String > response = restTemplate.postForEntity(url, entity, String.class);
+
+    Timestamp responseTime= new Timestamp(System.currentTimeMillis());
+    System.out.println("------"+responseTime);
+    
     JSONObject jsonObject = new JSONObject(response.getBody());
     String textValue = "";
     if (jsonObject.has("candidates") && jsonObject.getJSONArray("candidates").length() > 0) {
@@ -55,9 +65,10 @@ public class Index {
       }
     }
     System.out.println("Extracted Text: " + textValue);
-    System.out.println("Extracted Text: " + textValue);
 
+    Timestamp endTime= new Timestamp(System.currentTimeMillis());
+    System.out.print(endTime);
     model.addAttribute("response", textValue);
-    return "output.html";
+    return "index.html";
   }
 }
