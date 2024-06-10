@@ -26,6 +26,7 @@ public class Index {
   }
 
   @PostMapping(value = "/")
+  @ResponseBody
   public String getInput(UserInput userInput, Model model) {
     System.out.print("------------" + userInput.getQuery());
     
@@ -68,7 +69,7 @@ public class Index {
 
     Timestamp endTime= new Timestamp(System.currentTimeMillis());
     System.out.print(endTime);
-    model.addAttribute("response", textValue);
-    return "index.html";
+    
+    return textValue;
   }
 }

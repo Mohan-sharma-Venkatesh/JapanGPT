@@ -71,10 +71,10 @@
                     url: '/', // The URL to which the request is sent
                     type: 'POST', // The type of request to make
                     data: $(this).serialize(), // Serialize the form data
-                      debugger;
                     success: function(response) {
                       // Handle the response from the server
-                        console.log('Success:', response);
+                      console.log('Success:', response);
+                      document.getElementById("answer").innerText=response;
                     },
                     error: function(xhr, status, error) {
                         // Handle any errors that occurred during the request
