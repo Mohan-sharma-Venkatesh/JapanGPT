@@ -34,7 +34,6 @@ public class Index {
     System.out.print(startTime);
     String userQuery = userInput.getQuery();
 
-    // Ensure userQuery is properly escaped if necessary
     userQuery = userQuery.replace("\"", "\\\"");
 
     String url = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=AIzaSyAcZiXYhRwupywT-VLEeFjF8K_NyTpuxP4";
@@ -57,7 +56,6 @@ public class Index {
     JSONObject jsonObject = new JSONObject(response.getBody());
     String textValue = "";
     if (jsonObject.has("candidates") && jsonObject.getJSONArray("candidates").length() > 0) {
-      // Get the first candidate (assuming there's only one)
       JSONObject firstCandidate = jsonObject.getJSONArray("candidates").getJSONObject(0);
 
       if (firstCandidate.has("content") && firstCandidate.getJSONObject("content").has("parts") &&
